@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and editor state
+.venv/
+venv/
+.idea/
+.vscode/
+.mplconfig/
+
+# Local data
+data/CSV/*.csv
+data/row_data/
+data/med_data/
+processed/
+data/private/
+
+# Analysis outputs and model artifacts
+runs/
+artifacts/
+paper_figures/
+paper_tables/
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+
+# Temporary and operating-system files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

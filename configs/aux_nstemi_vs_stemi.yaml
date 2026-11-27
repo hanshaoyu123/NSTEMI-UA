@@ -1,0 +1,17 @@
+defaults: base.yaml
+output_dir: runs/aux_nstemi_vs_stemi
+
+data:
+  cohort_flag: stemi_vs_nstemi_cohort
+  label_column: stemi_vs_nstemi_label
+  label_shift: 0
+  num_classes: 2
+  signal_kind: ecg
+  signal_file_template: "ecg_{split}_filtered_mV_12x5000_float16.npy"
+  input_length: 5000
+  use_precomputed_folds: false
+  use_clinical: false
+
+model:
+  name: ms_resnet1d
+

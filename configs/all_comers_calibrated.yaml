@@ -1,0 +1,8 @@
+defaults: aux_all_comers.yaml
+output_dir: runs/all_comers_calibrated
+
+calibration:
+  temperature_scaling: true
+  temperature_min: 0.05
+  temperature_max: 10.0
+

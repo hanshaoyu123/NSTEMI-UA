@@ -1,0 +1,7 @@
+defaults: main_nstemi_vs_ua.yaml
+output_dir: runs/robust_raw_unfiltered
+
+data:
+  signal_kind: raw
+  raw_filter: false
+

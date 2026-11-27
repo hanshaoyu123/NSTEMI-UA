@@ -1,0 +1,78 @@
+project_root: .
+seed: 42
+
+data:
+  metadata_path: processed/metadata/metadata_preprocessed.csv
+  signals_dir: processed/signals
+  raw_data_dir: data/row_data
+  med_data_dir: data/med_data
+  cohort_flag: primary_cohort
+  label_column: primary_label
+  label_shift: 0
+  num_classes: 2
+  signal_kind: ecg
+  signal_file_template: "ecg_{split}_filtered_mV_12x5000_float16.npy"
+  median_file_template: "median_{split}_filtered_mV_12x500_float16.npy"
+  input_length: 5000
+  lead_count: 12
+  sampling_rate_hz: 500
+  use_precomputed_folds: true
+  clinical_columns:
+    - age
+    - gender
+  use_clinical: false
+  normalization_max_rows: 512
+  test_flag: test_inference_cohort
+  strict_one_record_per_patient: true
+
+augmentation:
+  enabled: true
+  gaussian_noise_prob: 0.30
+  gaussian_noise_sigma_mv: 0.01
+  amplitude_scale_prob: 0.30
+  amplitude_scale_min: 0.90
+  amplitude_scale_max: 1.10
+  time_shift_prob: 0.30
+  time_shift_max_s: 0.20
+  baseline_wander_prob: 0.20
+  baseline_wander_amplitude_mv: 0.05
+  lead_dropout_prob: 0.10
+  lead_dropout_max: 1
+
+model:
+  name: ms_resnet1d
+  base_channels: 64
+  stage_blocks: [2, 2, 2, 2]
+  dropout: 0.25
+  use_lead_attention: true
+  clinical_hidden_dim: 32
+
+training:
+  epochs: 60
+  batch_size: 32
+  eval_batch_size: 128
+  learning_rate: 0.0003
+  weight_decay: 0.01
+  beta1: 0.9
+  beta2: 0.95
+  eps: 1.0e-10
+  warmup_fraction: 0.05
+  gradient_clip_norm: 1.0
+  early_stopping_patience: 8
+  min_delta: 0.0005
+  num_workers: 0
+  pin_memory: true
+  amp: true
+  compile: false
+  class_weight: true
+  inner_validation_fraction: 0.10
+  calibration_fraction: 0.10
+  train_final_model: true
+
+evaluation:
+  bootstrap_iterations: 2000
+  target_sensitivity: 0.90
+  reliability_bins: 10
+
+output_dir: runs/main_nstemi_vs_ua
+

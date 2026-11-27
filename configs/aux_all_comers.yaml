@@ -1,0 +1,17 @@
+defaults: base.yaml
+output_dir: runs/aux_all_comers
+
+data:
+  cohort_flag: all_comers_cohort
+  label_column: all_comers_label
+  label_shift: 0
+  num_classes: 2
+  signal_kind: ecg
+  signal_file_template: "ecg_{split}_filtered_mV_12x5000_float16.npy"
+  input_length: 5000
+  use_precomputed_folds: false
+  use_clinical: false
+
+model:
+  name: ms_resnet1d
+

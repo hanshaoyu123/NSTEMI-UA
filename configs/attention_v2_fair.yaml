@@ -1,0 +1,20 @@
+defaults: main_nstemi_vs_ua.yaml
+output_dir: runs/attention_v2_fair
+
+model:
+  name: attention_resnet1d
+  base_channels: 64
+  stage_blocks: [2, 2, 2, 2]
+  dropout: 0.25
+  use_lead_attention: true
+  temporal_attention: true
+  cross_lead_transformer: true
+  transformer_token_dim: 128
+  transformer_layers: 2
+  transformer_heads: 4
+  transformer_dropout: 0.10
+
+calibration:
+  temperature_scaling: true
+  temperature_min: 0.05
+  temperature_max: 10.0

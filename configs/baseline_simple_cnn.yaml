@@ -1,0 +1,8 @@
+defaults: main_nstemi_vs_ua.yaml
+output_dir: runs/baseline_simple_cnn
+
+model:
+  name: simple_cnn
+  base_channels: 32
+  dropout: 0.20
+

@@ -1,0 +1,18 @@
+defaults: base.yaml
+output_dir: runs/aux_median_waveform
+
+data:
+  cohort_flag: primary_cohort
+  label_column: primary_label
+  label_shift: 0
+  num_classes: 2
+  signal_kind: median
+  signal_file_template: "median_{split}_filtered_mV_12x500_float16.npy"
+  input_length: 500
+  use_precomputed_folds: true
+  use_clinical: false
+
+model:
+  name: ms_resnet1d
+  base_channels: 48
+

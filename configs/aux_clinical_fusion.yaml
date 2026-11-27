@@ -1,0 +1,18 @@
+defaults: base.yaml
+output_dir: runs/aux_clinical_fusion
+
+data:
+  cohort_flag: primary_cohort
+  label_column: primary_label
+  label_shift: 0
+  num_classes: 2
+  signal_kind: ecg
+  signal_file_template: "ecg_{split}_filtered_mV_12x5000_float16.npy"
+  input_length: 5000
+  use_precomputed_folds: true
+  use_clinical: true
+
+model:
+  name: ms_resnet1d
+  clinical_hidden_dim: 32
+

@@ -1,0 +1,16 @@
+defaults: main_nstemi_vs_ua.yaml
+output_dir: runs/smoke
+
+data:
+  normalization_max_rows: 32
+
+training:
+  epochs: 1
+  batch_size: 8
+  eval_batch_size: 16
+  early_stopping_patience: 1
+  num_workers: 0
+  amp: false
+  compile: false
+  train_final_model: false
+
